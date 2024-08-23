@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.example.demo.mapper.FitMapper">
+	
+<insert id="loginup" parameterType="com.example.demo.dto.FitDTO">
+		insert into fitroot (u_idx, name, id, pw, birthday, tel)
+				values (fit_seq.nextval, #{name}, #{id}, #{pw}, TO_DATE(#{birthday},'YYYY-MM-DD'), #{tel})
+	</insert>
+	
+	
+	<select id="login" parameterType="com.example.demo.dto.FitDTO" resultType="com.example.demo.dto.FitDTO">
+		select * from fitroot
+			where id = #{id} and pw = #{pw} and status = 'N'
+	</select>
+	
+	<select id="getFitIdx" parameterType="_int" resultType="com.example.demo.dto.FitDTO">
+		select u_idx,name,id,pw,TO_CHAR(birthday, 'YYYYMMDD') AS birthday,tel,status, gender
+			from fitroot 
+			where u_idx = #{uIdx}
+	</select>
+	
+	<update id="updateFit" parameterType="com.example.demo.dto.FitDTO">
+		update fitroot
+    			set pw = #{pw}, birthday = TO_DATE(#{birthday}, 'YYYY-MM-DD'), tel = #{tel}
+    			where u_Idx = #{uIdx}
+	</update>
+	
+	<update id="deleteFit" parameterType="_int">
+		update fitroot
+			set status = 'Y'
+			where u_Idx = #{uIdx}
+	</update>
+	
+	
+	
+</mapper>
