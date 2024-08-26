@@ -45,5 +45,17 @@ public class FitServiceImpl implements FitService {
 		return dao.deleteFitroot(uIdx);
 	}
 
+	@Override
+	public int weightin(FitDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.weightin(dto);
+	}
+
+	@Override
+	public int weightip(FitDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.weightip(dto);
+	}
+
 	
 }

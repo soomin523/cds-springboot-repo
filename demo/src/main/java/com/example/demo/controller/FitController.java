@@ -74,7 +74,6 @@ public class FitController {
 			@GetMapping("/fitroot/{uIdx}/getFitIdx")
 			public FitDTO getFitIdx(@PathVariable("uIdx") String uIdx) {
 				FitDTO dto = fitService.getFitIdx(Integer.parseInt(uIdx));
-				
 				if(dto != null) {
 					System.out.println("회원정보 조회 성공");
 				}else {
@@ -108,5 +107,39 @@ public class FitController {
 				}
 				return result;
 			}
+			
+			@PutMapping("/weightin")
+			public Map<String, String> weightin(@RequestBody FitDTO dto) {
+				Map<String, String> result = new HashMap<String, String>();
+				
+				if(fitService.weightin(dto) == 1) {
+					FitDTO resDTO = fitService.getFitIdx(dto.getUIdx());
+					result.put("result", "OK");
+					
+				} else {
+					result.put("result", "FAIL");
+				}
+				
+				return result;
+			}
+			
+			@PutMapping("/weightip")
+			public Map<String, String> weightip(@RequestBody FitDTO dto) {
+				Map<String, String> result = new HashMap<String, String>();
+				
+				if(fitService.weightip(dto) == 1) {
+					FitDTO resDTO = fitService.getFitIdx(dto.getUIdx());
+					System.out.println(resDTO);
+					result.put("result", "OK");
+					
+				} else {
+					result.put("result", "FAIL");
+				}
+				
+				return result;
+			}
+			
+			
+			
 			
 }

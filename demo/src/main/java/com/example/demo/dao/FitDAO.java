@@ -41,4 +41,14 @@ public class FitDAO {
 		return sqlSession.update(Mapper+".deleteFit",uIdx);
 	}
 
+	public int weightin(FitDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(Mapper+".weightin", dto);
+	}
+
+	public int weightip(FitDTO dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(Mapper+".weightip", dto);
+	}
+
 }

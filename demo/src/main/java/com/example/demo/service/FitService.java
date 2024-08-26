@@ -14,5 +14,9 @@ public interface FitService {
 
 	int deleteFitroot(int uIdx);
 
+	int weightin(FitDTO dto);
+
+	int weightip(FitDTO dto);
+
 
 }
