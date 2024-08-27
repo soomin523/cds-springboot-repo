@@ -23,11 +23,17 @@
 		resultType="com.example.demo.dto.FitDTO">
 		select u_idx,name,id,pw,TO_CHAR(birthday, 'YYYYMMDD') AS
 		birthday,tel,status, age, height, finweight,
-		gender, January, February, March, April, May, June, July, August, September,
-		October, November, December
+		gender, January, February,
+		March, April, May, June, July, August, September,
+		October, November,
+		December,water, TO_CHAR(startsleep, 'HH24:MI') AS startsleep,
+		TO_CHAR(endsleep, 'HH24:MI') AS endsleep, sleepcheck
 		from fitroot
-		where u_idx = #{uIdx}
+		where
+		u_idx = #{uIdx}
 	</select>
+
+
 
 	<update id="updateFit"
 		parameterType="com.example.demo.dto.FitDTO">
@@ -66,5 +72,23 @@
 		WHERE u_Idx = #{uIdx}
 	</update>
 
+	<select id="checkid" parameterType="string" resultType="_int">
+		select count(*) from fitroot
+		where id = #{id}
+	</select>
+
+	<update id="waterin" parameterType="com.example.demo.dto.FitDTO">
+		UPDATE fitroot
+		SET water = #{water}
+		WHERE u_Idx = #{uIdx}
+	</update>
+
+	<update id="sleep" parameterType="com.example.demo.dto.FitDTO">
+		UPDATE fitroot
+		SET startsleep = TO_TIMESTAMP(#{startsleep}, 'HH24:MI'),
+		endsleep = TO_TIMESTAMP(#{endsleep}, 'HH24:MI'),
+		sleepcheck = #{sleepcheck}
+		WHERE u_idx = #{uIdx}
+	</update>
 
 </mapper>

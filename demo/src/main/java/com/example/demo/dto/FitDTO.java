@@ -31,4 +31,8 @@ public class FitDTO {
     private int age;
     private int height;
     private int finweight;
+    private int water;
+    private String startsleep;
+    private String endsleep;
+    private String sleepcheck;
 }

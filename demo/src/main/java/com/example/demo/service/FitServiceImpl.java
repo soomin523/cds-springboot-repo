@@ -57,5 +57,21 @@ public class FitServiceImpl implements FitService {
 		return dao.weightip(dto);
 	}
 
-	
+	@Override
+    public int waterin(FitDTO dto) {
+        // TODO Auto-generated method stub
+        return dao.waterin(dto);
+    }
+
+    @Override
+    public int sleep(FitDTO dto) {
+        // TODO Auto-generated method stub
+        return dao.sleep(dto);
+    }
+    
+    @Override
+    public int checkid(String id) {
+        // TODO Auto-generated method stub
+        return dao.checkid(id);
+    }
 }

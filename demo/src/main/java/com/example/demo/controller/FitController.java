@@ -140,6 +140,49 @@ public class FitController {
 			}
 			
 			
-			
+			@PutMapping("/waterin")
+            public Map<String, String> waterin(@RequestBody FitDTO dto) {
+                Map<String, String> result = new HashMap<String, String>();
+
+                if(fitService.waterin(dto) == 1) {
+                    FitDTO resDTO = fitService.getFitIdx(dto.getUIdx());
+                    System.out.println(resDTO);
+                    result.put("result", "OK");
+
+                } else {
+                    result.put("result", "FAIL");
+                }
+
+                return result;
+            }
+
+
+            @PutMapping("/sleep")
+            public Map<String, String> sleep(@RequestBody FitDTO dto) {
+                Map<String, String> result = new HashMap<String, String>();
+
+                if(fitService.sleep(dto) == 1) {
+                    FitDTO resDTO = fitService.getFitIdx(dto.getUIdx());
+                    System.out.println(resDTO);
+                    result.put("result", "OK");
+
+                } else {
+                    result.put("result", "FAIL");
+                }
+
+                return result;
+            }
+            
+            @GetMapping("/fitroot/{id}/checkid")
+            public int checkid(@PathVariable("id") String id) {
+                int dto = fitService.checkid(id);
+                System.out.print(dto);
+                if(dto == 1) {
+                    System.out.println("아이디 중복");
+                }else {
+                    System.out.println("아이디 정상 입력");
+                }
+                return dto;
+            }
 			
 }

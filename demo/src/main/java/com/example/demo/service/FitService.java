@@ -18,5 +18,9 @@ public interface FitService {
 
 	int weightip(FitDTO dto);
 
+	int waterin(FitDTO dto);
 
+    int sleep(FitDTO dto);
+    
+    int checkid(String id);
 }

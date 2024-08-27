@@ -50,5 +50,20 @@ public class FitDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.update(Mapper+".weightip", dto);
 	}
+	
+	public int waterin(FitDTO dto) {
+        // TODO Auto-generated method stub
+        return sqlSession.update(Mapper+".waterin", dto);
+    }
+
+    public int sleep(FitDTO dto) {
+        // TODO Auto-generated method stub
+        return sqlSession.update(Mapper+".sleep", dto);
+    }
+    
+    public int checkid(String id) {
+        // TODO Auto-generated method stub
+        return sqlSession.selectOne(Mapper+".checkid", id);
+    }
 
 }
